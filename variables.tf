@@ -1,7 +1,3 @@
-variable "prefix" {
-  description = "Prefix to use for all the resources created"
-}
-
 variable "project_id" {
   description = "Project Id"
   default     = ""
