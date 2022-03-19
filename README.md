@@ -3,9 +3,8 @@ Setup VPC peering between Valtix Service VPC (Datapatah VPC) and the Spoke VPC. 
 
 ## Variables
 
-* `prefix` - (Required) Prefix added to the service accounts (and any other resources) created
-* `project_id` - (Required) GCP Project Id where the Service Accounts (and eventually Valtix Gateways) are created
-* `valtix_egress_gw_endpoint` - (Optional) IP Address of the Valtix Egress Gateway Endpoint
+* `project_id` - (Required) GCP Project Id where the peerings and routes are created
+* `valtix_egress_gw_endpoint` - (Required) IP Address of the Valtix Egress Gateway Endpoint
 * `valtix_service_vpc_id` - (Required) Valtix Service VPC Id (Datapath VPC) (self_link)
 * `spoke_vpc_id` - (Required) Spoke VPC Id (self_link) that needs to be peered with the Valtix Service VPC
 
@@ -45,7 +44,6 @@ provider "google" {
 
 module "spoke_peering" {
   source                    = "github.com/valtix-security/terraform-gcp-spoke-vpc"
-  prefix                    = "someprefix"
   valtix_egress_gw_endpoint = "172.16.1.2"
   valtix_service_vpc_id     = "valtix service vpc self_link"
   spoke_vpc_id              = "spoke vpc self_link"
